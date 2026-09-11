@@ -1,3 +1,7 @@
+/* =========================
+   LOADER
+========================= */
+
 .loader-container {
   position: fixed;
   top: 0;
@@ -10,36 +14,59 @@
   background-color: rgba(44, 44, 44, 0.8);
   z-index: 999;
 }
+
 .loader-icon {
   font-size: 80px;
   animation: spin 1s linear infinite;
   color: #d2042d;
 }
+
 @keyframes spin {
   0% {
     transform: rotate(0deg);
   }
+
   100% {
     transform: rotate(360deg);
   }
 }
+
+/* =========================
+   NAVBAR
+========================= */
+
 .navbar {
   display: flex;
+  align-items: center;
   justify-content: space-between;
+  gap: 20px;
   padding: 1.5rem;
   font-size: 1rem;
+  width: 100%;
+  box-sizing: border-box;
 }
+
 .navbar h2 {
   font-size: 30px;
+  margin: 0;
+  white-space: nowrap;
 }
+
+/* =========================
+   SEARCH BAR
+========================= */
+
 .search-bar {
   display: flex;
-  flex-grow: 1;
+  flex: 1;
+  width: 100%;
   max-width: 650px;
   margin: 0 20px;
 }
+
 .search-input {
-  flex-grow: 1;
+  flex: 1;
+  min-width: 0;
   padding: 10px;
   border: 2px solid #d2042d;
   border-right: none;
@@ -47,9 +74,11 @@
   outline: none;
   font-size: 14px;
 }
+
 .search-input::placeholder {
   color: #ccc;
 }
+
 .search-btn {
   background-color: #d2042d;
   color: black;
@@ -58,21 +87,33 @@
   border-radius: 0 20px 20px 0;
   font-weight: bold;
   cursor: pointer;
+  white-space: nowrap;
 }
+
+/* =========================
+   NAVBAR ICONS
+========================= */
+
 .icons {
   display: flex;
   align-items: center;
   gap: 1rem;
+  flex-shrink: 0;
 }
+
 .icons .icon {
   font-size: 35px;
   cursor: pointer;
 }
+
 .cart-icon {
   position: relative;
   border: none;
   background: transparent;
+  padding: 0;
+  cursor: pointer;
 }
+
 .cart-qty {
   position: absolute;
   bottom: 20px;
@@ -83,13 +124,19 @@
   font-size: 0.7rem;
   padding: 0.2rem 0.4rem;
 }
+
+/* =========================
+   PROFILE
+========================= */
+
 .profile-group {
   position: relative;
 }
+
 .dropdown-menu {
   display: none;
   position: absolute;
-  top: 20px;
+  top: 35px;
   right: -30px;
   background: #fff;
   border: 1px solid lightgrey;
@@ -97,15 +144,147 @@
   width: 130px;
   padding: 10px;
   box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  z-index: 1000;
 }
+
 .profile-group:hover .dropdown-menu {
   display: block;
 }
+
 .dropdown-item {
   color: grey;
   cursor: pointer;
   margin: 2px 0;
 }
+
 .dropdown-item:hover {
   color: black;
+}
+
+/* =================================
+   TABLET
+   768px - 1024px
+================================= */
+
+@media screen and (max-width: 1024px) {
+  .navbar {
+    padding: 1.2rem;
+    gap: 15px;
+  }
+
+  .navbar h2 {
+    font-size: 26px;
+  }
+
+  .search-bar {
+    margin: 0 10px;
+  }
+
+  .icons {
+    gap: 0.7rem;
+  }
+
+  .icons .icon {
+    font-size: 30px;
+  }
+}
+
+/* =================================
+   MOBILE
+   481px - 767px
+================================= */
+
+@media screen and (max-width: 767px) {
+  .navbar {
+    flex-wrap: wrap;
+    padding: 15px;
+    gap: 15px;
+  }
+
+  .navbar h2 {
+    font-size: 25px;
+  }
+
+  .icons {
+    gap: 0.7rem;
+  }
+
+  .icons .icon {
+    font-size: 30px;
+  }
+
+  /* Search takes full row */
+  .search-bar {
+    order: 3;
+    width: 100%;
+    max-width: none;
+    margin: 0;
+  }
+
+  .search-input {
+    padding: 10px 12px;
+  }
+
+  .search-btn {
+    padding: 10px 15px;
+  }
+}
+
+/* =================================
+   SMALLEST SCREEN
+   480px AND BELOW
+================================= */
+
+@media screen and (max-width: 480px) {
+  .navbar {
+    padding: 12px 10px;
+    gap: 12px;
+  }
+
+  .navbar h2 {
+    font-size: 22px;
+  }
+
+  .icons {
+    gap: 8px;
+  }
+
+  .icons .icon {
+    font-size: 27px;
+  }
+
+  .cart-qty {
+    bottom: 17px;
+    right: -4px;
+    font-size: 10px;
+    padding: 3px 5px;
+  }
+
+  .search-bar {
+    width: 100%;
+    margin: 0;
+  }
+
+  .search-input {
+    font-size: 13px;
+    padding: 9px 10px;
+  }
+
+  .search-btn {
+    padding: 9px 12px;
+    font-size: 13px;
+  }
+
+  .dropdown-menu {
+    right: -5px;
+    width: 120px;
+  }
+
+  .dropdown-item {
+    font-size: 14px;
+  }
+
+  .loader-icon {
+    font-size: 60px;
+  }
 }

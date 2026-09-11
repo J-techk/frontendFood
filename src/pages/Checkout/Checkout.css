@@ -1,65 +1,124 @@
 .form-container {
   display: flex;
   flex-direction: row;
-  gap: 6rem;
+  gap: 4rem;
   padding-top: 2rem;
   min-height: 80vh;
   border-top: 1px solid #ddd;
+  width: 100%;
+  box-sizing: border-box;
 }
+
+/* =========================
+   LEFT FORM
+========================= */
+
 .form-left {
-  gap: 1rem;
   width: 100%;
   max-width: 650px;
+  box-sizing: border-box;
 }
+
 .payment-method {
   border: 2px solid #ccc;
   padding: 30px;
   border-radius: 10px;
+  width: 100%;
+  box-sizing: border-box;
 }
+
 .payment-method legend {
   font-size: 24px;
+  font-weight: 600;
 }
+
 .payment-options {
   display: flex;
-  gap: 2rem;
+  gap: 1rem;
+  flex-wrap: wrap;
+  margin-top: 1rem;
 }
+
 .payment-option {
+  display: flex;
   align-items: center;
+  justify-content: center;
   border: 1px solid #ccc;
-  padding: 0.6rem 4.8rem;
+  padding: 0.6rem 2rem;
   border-radius: 5px;
+  min-width: 150px;
+  box-sizing: border-box;
+  cursor: pointer;
 }
+
 .payment-option.selected {
   background-color: #d2042d;
+  color: #fff;
 }
+
 .payment-text {
   font-size: 0.8rem;
   cursor: pointer;
 }
+
 .payment-logo {
   height: 20px;
+  object-fit: contain;
 }
+
+/* =========================
+   FORM TITLE
+========================= */
+
 .form-title h2 {
-  font-size: 2rem;
+  font-size: clamp(20px, 3vw, 32px);
   margin-bottom: 1rem;
 }
+
+/* =========================
+   FORM ROW
+========================= */
+
 .form-row {
   display: flex;
   gap: 1rem;
+  width: 100%;
+  margin-bottom: 1rem;
 }
+
 .form-input {
   border: 1px solid #ccc;
   border-radius: 5px;
   padding: 0.9rem 1rem;
-  width: 95%;
+  width: 100%;
+  min-width: 0;
+  box-sizing: border-box;
+  outline: none;
 }
+
+.form-input:focus {
+  border-color: #d2042d;
+}
+
+/* =========================
+   RIGHT SIDE / CART TOTAL
+========================= */
+
 .form-right {
   width: 480px;
+  max-width: 100%;
+  box-sizing: border-box;
 }
+
+/* =========================
+   SUBMIT BUTTON
+========================= */
+
 .form-submit {
   text-align: right;
   margin-top: 2rem;
 }
+
 .submit-button {
   background-color: #d2042d;
   color: #fff;
@@ -69,4 +128,157 @@
   border: none;
   border-radius: 5px;
   cursor: pointer;
+  transition: 0.3s ease;
+}
+
+.submit-button:hover {
+  opacity: 0.9;
+}
+
+/* =========================
+   TABLET
+   769px - 1024px
+========================= */
+
+@media screen and (max-width: 1024px) {
+  .form-container {
+    gap: 2rem;
+    padding: 2rem 1rem 0;
+  }
+
+  .form-left {
+    max-width: 100%;
+  }
+
+  .form-right {
+    width: 40%;
+  }
+
+  .payment-method {
+    padding: 25px;
+  }
+
+  .payment-option {
+    padding: 0.6rem 1.5rem;
+  }
+}
+
+/* =========================
+   MOBILE
+   481px - 768px
+========================= */
+
+@media screen and (max-width: 768px) {
+  .form-container {
+    flex-direction: column;
+    gap: 2rem;
+    padding: 1.5rem 1rem 0;
+    min-height: auto;
+  }
+
+  .form-left {
+    width: 100%;
+    max-width: 100%;
+  }
+
+  .form-right {
+    width: 100%;
+    max-width: 100%;
+  }
+
+  .payment-method {
+    padding: 20px;
+  }
+
+  .payment-method legend {
+    font-size: 20px;
+  }
+
+  .payment-options {
+    gap: 0.8rem;
+  }
+
+  .payment-option {
+    flex: 1;
+    min-width: 140px;
+    padding: 0.6rem 1rem;
+  }
+
+  .form-row {
+    gap: 0.8rem;
+  }
+
+  .form-submit {
+    margin-top: 1.5rem;
+  }
+}
+
+/* =========================
+   SMALLEST SCREEN
+   480px and below
+========================= */
+
+@media screen and (max-width: 480px) {
+  .form-container {
+    width: 100%;
+    padding: 1rem 10px 0;
+    gap: 1.5rem;
+  }
+
+  .form-title h2 {
+    font-size: 21px;
+    margin-bottom: 0.8rem;
+  }
+
+  .payment-method {
+    padding: 15px;
+    border-width: 1px;
+  }
+
+  .payment-method legend {
+    font-size: 18px;
+  }
+
+  .payment-options {
+    flex-direction: column;
+    gap: 0.7rem;
+  }
+
+  .payment-option {
+    width: 100%;
+    min-width: 0;
+    padding: 0.7rem 1rem;
+  }
+
+  .payment-text {
+    font-size: 0.8rem;
+  }
+
+  .payment-logo {
+    height: 18px;
+  }
+
+  .form-row {
+    flex-direction: column;
+    gap: 0.8rem;
+    margin-bottom: 0.8rem;
+  }
+
+  .form-input {
+    width: 100%;
+    padding: 0.8rem;
+  }
+
+  .form-right {
+    width: 100%;
+  }
+
+  .form-submit {
+    margin-top: 1rem;
+  }
+
+  .submit-button {
+    padding: 12px;
+    font-size: 0.95rem;
+  }
 }

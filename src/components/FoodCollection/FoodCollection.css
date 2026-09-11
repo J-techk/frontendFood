@@ -1,26 +1,45 @@
 .food_container {
+  width: 100%;
   margin-top: 50px;
+  padding: 0 20px;
+  box-sizing: border-box;
 }
+
 .header_section h1 {
-  font-size: 38px;
+  font-size: clamp(28px, 4vw, 38px);
   font-weight: bold;
 }
+
+/* =========================
+   DISPLAY CONTAINER
+========================= */
+
 .display_container {
   display: flex;
-  gap: 100px;
+  gap: 40px;
+  width: 100%;
 }
+
+/* =========================
+   CATEGORY SECTION
+========================= */
+
 .category_section {
-  width: 28%;
+  width: 25%;
+  min-width: 200px;
   background: #f8f8f8;
   padding: 20px;
+  box-sizing: border-box;
 }
+
 .category_section h1 {
   font-size: 22px;
 }
+
 .category_list {
   list-style: none;
   padding: 0;
-  width: 80%;
+  width: 100%;
 }
 
 .category_list li {
@@ -28,59 +47,292 @@
   cursor: pointer;
   border-bottom: 1px solid #ddd;
 }
+
 .category_list li.active {
   font-weight: bold;
   color: #fff;
   background: #d2042d;
 }
+
+/* =========================
+   PRODUCT GRID
+========================= */
+
 .grid_display {
-  width: 50%;
+  flex: 1;
   display: grid;
-  grid-template-columns: repeat(3, 1fr);
+
+  /* Automatically adjusts number of columns */
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+
   gap: 20px;
-  column-gap: 30px;
-  justify-content: center;
+  width: 100%;
   margin-top: 30px;
 }
+
+/* =========================
+   PRODUCT CARD
+========================= */
+
 .product_card {
-  width: 250px;
+  width: 100%;
+  max-width: 250px;
   border: 1px solid #ddd;
   padding: 10px;
   text-align: center;
   position: relative;
   overflow: hidden;
   transition: box-shadow 0.3s ease;
+  box-sizing: border-box;
+  margin: 0 auto;
 }
+
 .product_card:hover {
   box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
 }
+
+/* =========================
+   PRODUCT IMAGE
+========================= */
+
 .product-image {
   position: relative;
+  width: 100%;
 }
+
 .product-image img {
   width: 100%;
   height: 260px;
+  object-fit: cover;
+  display: block;
 }
+
+/* =========================
+   PRODUCT DETAILS
+========================= */
+
 .product_card h3 {
   font-size: 20px;
-  margin: 5px 0;
-  margin-bottom: 10px;
+  margin: 5px 0 10px;
 }
+
+.product_card p {
+  font-size: 24px;
+  padding-bottom: 15px;
+  margin: 0;
+}
+
+/* =========================
+   PRICE + BUTTON
+========================= */
+
 .price-add {
   display: flex;
+  align-items: center;
   justify-content: space-between;
-  gap: 20px;
+  gap: 10px;
   margin-top: 15px;
   padding: 10px;
 }
+
 .price-add button {
-  padding: 0.5rem 2rem;
+  padding: 0.5rem 1.5rem;
   border: none;
   background: #d2042d;
   border-radius: 5px;
   color: white;
+  cursor: pointer;
+  white-space: nowrap;
 }
-.product_card p {
-  font-size: 24px;
-  padding-bottom: 15px;
+
+/* =================================
+   TABLET
+   768px - 1024px
+================================= */
+
+@media screen and (max-width: 1024px) {
+  .display_container {
+    gap: 25px;
+  }
+
+  .category_section {
+    width: 25%;
+    min-width: 180px;
+    padding: 15px;
+  }
+
+  .category_list li {
+    padding: 12px;
+  }
+
+  .grid_display {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 20px;
+  }
+
+  .product_card {
+    max-width: 280px;
+  }
+
+  .product-image img {
+    height: 230px;
+  }
+}
+
+/* =================================
+   MOBILE
+   481px - 767px
+================================= */
+
+@media screen and (max-width: 767px) {
+  .food_container {
+    margin-top: 35px;
+    padding: 0 15px;
+  }
+
+  .header_section h1 {
+    font-size: 30px;
+    text-align: center;
+  }
+
+  .display_container {
+    flex-direction: column;
+    gap: 20px;
+  }
+
+  /* Category becomes full width */
+  .category_section {
+    width: 100%;
+    min-width: 0;
+    padding: 15px;
+  }
+
+  .category_section h1 {
+    font-size: 20px;
+  }
+
+  .category_list {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+  }
+
+  .category_list li {
+    padding: 10px 15px;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+  }
+
+  .category_list li.active {
+    background: #d2042d;
+    border-color: #d2042d;
+  }
+
+  /* Products become 2 columns */
+  .grid_display {
+    width: 100%;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 15px;
+    margin-top: 10px;
+  }
+
+  .product_card {
+    width: 100%;
+    max-width: none;
+  }
+
+  .product-image img {
+    height: 200px;
+  }
+
+  .product_card h3 {
+    font-size: 17px;
+  }
+
+  .product_card p {
+    font-size: 20px;
+  }
+
+  .price-add {
+    padding: 5px;
+    gap: 5px;
+  }
+
+  .price-add button {
+    padding: 0.5rem 1rem;
+    font-size: 13px;
+  }
+}
+
+/* =================================
+   SMALLEST SCREEN
+   480px AND BELOW
+================================= */
+
+@media screen and (max-width: 480px) {
+  .food_container {
+    margin-top: 25px;
+    padding: 0 10px;
+  }
+
+  .header_section h1 {
+    font-size: 26px;
+  }
+
+  .display_container {
+    gap: 15px;
+  }
+
+  .category_section {
+    padding: 12px;
+  }
+
+  .category_section h1 {
+    font-size: 18px;
+  }
+
+  .category_list {
+    gap: 6px;
+  }
+
+  .category_list li {
+    padding: 8px 10px;
+    font-size: 14px;
+  }
+
+  /* Keep 2 products per row */
+  .grid_display {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 10px;
+  }
+
+  .product_card {
+    padding: 7px;
+  }
+
+  .product-image img {
+    height: 150px;
+  }
+
+  .product_card h3 {
+    font-size: 15px;
+    margin-bottom: 5px;
+  }
+
+  .product_card p {
+    font-size: 18px;
+    padding-bottom: 5px;
+  }
+
+  .price-add {
+    flex-direction: column;
+    gap: 8px;
+    margin-top: 5px;
+  }
+
+  .price-add button {
+    width: 100%;
+    padding: 8px;
+    font-size: 13px;
+  }
 }
