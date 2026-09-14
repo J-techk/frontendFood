@@ -9,7 +9,7 @@ import Footer from "./components/Footer/Footer";
 import { Route, Routes } from "react-router-dom";
 import { ToastContainer, toast } from "react-toastify";
 
-export const backendUrl = "https://backend-foods-eight.vercel.app/";
+export const backendUrl = "https://backend-foods-eight.vercel.app";
 
 const App = () => {
   return (
